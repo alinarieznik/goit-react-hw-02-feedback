@@ -1,5 +1,3 @@
-import { Component } from 'react';
-
 export const Section = ({ title, children }) => {
   return (
     <section>

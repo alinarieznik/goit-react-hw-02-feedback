@@ -1,5 +1,3 @@
-import { Component } from 'react';
-
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <ul>
