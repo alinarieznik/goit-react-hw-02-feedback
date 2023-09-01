@@ -1,17 +1,19 @@
+import { StyledFeedbackList, StyledButton } from './FeedbackOptions.styled';
+
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
-    <ul>
+    <StyledFeedbackList>
       {options.map(option => (
         <li key={option}>
-          <button
+          <StyledButton
             key={option}
             type="button"
             onClick={() => onLeaveFeedback(option)}
           >
-            {option}
-          </button>
+            {option[0].toUpperCase() + option.slice(1)}
+          </StyledButton>
         </li>
       ))}
-    </ul>
+    </StyledFeedbackList>
   );
 };
