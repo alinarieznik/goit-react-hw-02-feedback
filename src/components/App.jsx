@@ -46,40 +46,32 @@ export class App extends Component {
   };
 
   render() {
+    let statsContent;
     if (this.countTotalFeedback()) {
-      return (
-        <StyledContainer>
-          <Section title="Please leave feedback">
-            <FeedbackOptions
-              options={Object.keys(this.state)}
-              onLeaveFeedback={this.onFeedbackLeave}
-            ></FeedbackOptions>
-          </Section>
-          <Section title="Statistics">
-            <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
-            ></Statistics>
-          </Section>
-        </StyledContainer>
+      statsContent = (
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        ></Statistics>
       );
     } else {
-      return (
-        <StyledContainer>
-          <Section title="Please leave feedback">
-            <FeedbackOptions
-              options={Object.keys(this.state)}
-              onLeaveFeedback={this.onFeedbackLeave}
-            ></FeedbackOptions>
-          </Section>
-          <Section title="Statistics">
-            <Notification message="There is no feedback"></Notification>
-          </Section>
-        </StyledContainer>
+      statsContent = (
+        <Notification message="There is no feedback"></Notification>
       );
     }
+    return (
+      <StyledContainer>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.onFeedbackLeave}
+          ></FeedbackOptions>
+        </Section>
+        <Section title="Statistics">{statsContent}</Section>
+      </StyledContainer>
+    );
   }
 }
